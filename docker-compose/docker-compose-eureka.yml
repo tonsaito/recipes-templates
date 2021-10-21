@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  eureka:
+    container_name: eureka
+    image: springcloud/eureka:latest
+    environment:
+      - eureka_server_enable-self-preservation=true
+      - eureka_client_registerWithEureka=false
+      - eureka_client_fetchRegistry=false
+    ports:
+      - "8761:8761"
+    networks:
+      - eureka-net
+
+networks:
+  eureka-net:
+    driver: bridge
